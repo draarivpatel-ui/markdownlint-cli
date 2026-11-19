@@ -234,12 +234,7 @@ function tryResolvePath(filepath) {
       let paths = Module._nodeModulePaths(processCwd);
       // eslint-disable-next-line unicorn/prefer-spread
       paths = paths.concat(Module.globalPaths);
-      if (require.resolve.paths) {
-        // Node >= 8.9.0
-        return require.resolve(filepath, {paths: paths});
-      }
-
-      return Module._resolveFilename(filepath, {paths: paths});
+      return require.resolve(filepath, {paths: paths});
     }
 
     // Maybe it is a path to package installed locally
